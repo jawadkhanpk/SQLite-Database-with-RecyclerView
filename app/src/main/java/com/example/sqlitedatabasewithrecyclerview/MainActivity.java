@@ -3,8 +3,10 @@ package com.example.sqlitedatabasewithrecyclerview;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -24,7 +26,18 @@ public class MainActivity extends AppCompatActivity {
         btnShowOnRecyclerView = findViewById(R.id.idBtnShowOnRV);
 
 
+        btnSubmitt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                processInsert(etName.getText().toString(), etContact.getText().toString(), etEmail.getText().toString());
 
+            }
+        });
 
+    }
+
+    private void processInsert(String n, String c, String e) {
+        String res = new DbManager(this).addRecord(n,c,e);
+        Toast.makeText(this, res, Toast.LENGTH_SHORT).show();
     }
 }
