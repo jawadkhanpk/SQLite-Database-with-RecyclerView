@@ -1,6 +1,8 @@
 package com.example.sqlitedatabasewithrecyclerview;
 
+import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -24,6 +26,33 @@ public class DbManager extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
+
+        String qry = "DROP TABLE IF EXISTS tblcontact";
+        sqLiteDatabase.execSQL(qry);
+        onCreate(sqLiteDatabase);
+    }
+
+    public String addRecord(String name, String contact, String email){
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv  = new ContentValues();
+        cv.put("name",name);
+        cv.put("contact",contact);
+        cv.put("email",email);
+
+        float result = db.insert("tbl_contact", null, cv);
+        if (result == -1)
+            return "Failed";
+        else
+            return "Successfully Inserted";
+}
+
+    public Cursor readAllData(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        String qry = "select * from tbl_contact order by id desc";
+        Cursor cursor = db.rawQuery(qry,null);
+        return cursor;
+
 
     }
 }
