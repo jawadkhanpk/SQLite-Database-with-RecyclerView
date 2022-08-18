@@ -27,7 +27,7 @@ public class DbManager extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
 
-        String qry = "DROP TABLE IF EXISTS tblcontact";
+        String qry = "DROP TABLE IF EXISTS tbl_contact";
         sqLiteDatabase.execSQL(qry);
         onCreate(sqLiteDatabase);
     }

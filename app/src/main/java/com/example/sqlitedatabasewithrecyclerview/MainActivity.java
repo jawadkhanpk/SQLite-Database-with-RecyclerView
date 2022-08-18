@@ -32,9 +32,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 processInsert(etName.getText().toString(), etContact.getText().toString(), etEmail.getText().toString());
-
             }
         });
+
 
         btnShowOnRecyclerView.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -12,17 +12,17 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.myViewHolder>{
 
+    ArrayList<ModelClass> dataholder;
+
     public MyAdapter(ArrayList<ModelClass> dataholder) {
         this.dataholder = dataholder;
     }
 
-    ArrayList<ModelClass> dataholder;
 
 
     @NonNull
     @Override
     public myViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.row,parent,false);
         return new myViewHolder(view);
 
@@ -31,6 +31,10 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.myViewHolder>{
 
     @Override
     public void onBindViewHolder(@NonNull myViewHolder holder, int position) {
+
+        holder.dname.setText(dataholder.get(position).getName());
+        holder.dcontact.setText(dataholder.get(position).getContact());
+        holder.demail.setText(dataholder.get(position).getEmail());
 
     }
 
