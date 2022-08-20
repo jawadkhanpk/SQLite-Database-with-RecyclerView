@@ -14,7 +14,7 @@ import java.util.ArrayList;
 public class FetchDataActivity extends AppCompatActivity {
 
     RecyclerView recyclerView;
-    ArrayList<ModelClass> dataholder;
+    ArrayList<ModelClass> dataholder=new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,7 +25,7 @@ public class FetchDataActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         Cursor cursor = new  DbManager(this).readAllData();
-        Toast.makeText(getApplicationContext(),"curor="+cursor.getString(0),Toast.LENGTH_SHORT).show();
+//        Toast.makeText(getApplicationContext(),"curor="+cursor.getString(0),Toast.LENGTH_SHORT).show();
 
 
         while (cursor.moveToNext()){
